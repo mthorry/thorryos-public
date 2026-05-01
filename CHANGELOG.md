@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.1.4] — 2026-05-01
+
+### Changed
+
+- **Attribution footer links now point to the public docs mirror** ([github.com/mthorry/thorryos-public](https://github.com/mthorry/thorryos-public)) instead of the private marketplace repo. Anyone clicking the "Learn more" link in a generated Slack message, Jira ticket, Confluence page, or meeting readout now lands on docs they can actually read — no more 404 for non-collaborators.
+- Affected: `shipped-note`, `spike-wrap`, `meeting-notes` (1-liner + full readout), `jira-ticket`, `jira-file`, `/spike-doc`.
+
+[v0.1.4]: https://github.com/mthorry/thorryos/releases/tag/v0.1.4
+
 ## [v0.1.3] — 2026-05-01
 
 ### Changed
