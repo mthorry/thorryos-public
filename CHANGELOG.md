@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.1.7] — 2026-05-01
+
+### Changed
+
+- **PRs opened during a `/plan` workflow now use the canonical ThorryOS attribution footer.** `/plan` overrides the global PR template's `Generated with [Claude Code]` line with `*This was created using ThorryOS with [Claude](https://claude.com/claude-code). [Learn more](https://github.com/mthorry/thorryos-public).*` — same wording as Jira sub-tasks, Slack messages, and Confluence pages produced by other ThorryOS skills. Brings PRs into the same attribution surface as the rest of the artifacts and keeps `Learn more` pointing at the public docs mirror.
+- Affected: `thorry-pr-flow/commands/plan.md`.
+
+[v0.1.7]: https://github.com/mthorry/thorryos/releases/tag/v0.1.7
+
 ## [v0.1.6] — 2026-05-01
 
 ### Changed
