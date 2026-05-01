@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.1.5] — 2026-05-01
+
+### Changed
+
+- **`/plan` and `/scope` now load domain context before producing output.** Both commands gained a "Step 0 — Load domain context" preamble that infers whether the task touches a domain with its own context skill and invokes it before breaking down PRs or shaping scope. Today the only registered domain is `eligibility-context` (Carrot.Eligibility) — when it fires, planning and scoping are framed against the documented current-state vs future-state model and `BEST_PRACTICES.md` anti-patterns are called out explicitly rather than silently designed around. New domain-context skills can be added to the bullet list as they're created.
+- Affected: `thorry-pr-flow/commands/plan.md`, `thorry-pr-flow/commands/scope.md`.
+
+[v0.1.5]: https://github.com/mthorry/thorryos/releases/tag/v0.1.5
+
 ## [v0.1.4] — 2026-05-01
 
 ### Changed
