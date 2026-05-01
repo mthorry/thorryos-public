@@ -65,6 +65,8 @@ The first registers this repo as a marketplace; the second opens the picker so y
 
 **Access required:** this repo is private under `mthorry`. Ping Matt to be added as a collaborator first, and make sure your `gh auth status` is logged in — `/plugin marketplace add` uses your local GitHub credentials to clone.
 
+> 📖 **Don't have access yet?** The docs (this README + CHANGELOG + CONTRIBUTING) live publicly at [github.com/mthorry/thorryos-public](https://github.com/mthorry/thorryos-public) — share that link with teammates so they can read what ThorryOS is before requesting access.
+
 You'll see four plugins:
 
 ```
