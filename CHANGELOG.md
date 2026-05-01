@@ -2,6 +2,22 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.0] — 2026-05-01
+
+### Changed (breaking)
+
+- **Renamed `thorry-meetings` → `thorry-debriefs`.** The plugin's job has always been "turn raw input into a structured readout for an audience" — calling it `meetings` understated the scope and miscued the trigger. `debriefs` matches what the skills actually do: extract decisions, action items, and risks from a completed event. Anyone with `thorry-meetings` enabled will need to enable `thorry-debriefs` after `/plugin marketplace update`.
+- **Moved `spike-wrap` from `thorry-meetings` (now `thorry-debriefs`) to `thorry-jira`.** The skill announces a completed spike, which is the natural pair to `/spike-doc` (research → Confluence + ticket cluster) already living in `thorry-jira`. Grouping them puts the spike workflow under one plugin instead of straddling two. If you previously had only `thorry-meetings` enabled and used `spike-wrap`, you'll need to enable `thorry-jira` to keep using it.
+
+### Affected
+
+- `thorry-meetings/` → `thorry-debriefs/` (directory renamed)
+- `thorry-meetings/skills/spike-wrap/` → `thorry-jira/skills/spike-wrap/` (skill relocated)
+- `thorry-debriefs/.claude-plugin/plugin.json`, `thorry-jira/.claude-plugin/plugin.json` (descriptions updated)
+- `.claude-plugin/marketplace.json`, `README.md`, `CONTRIBUTING.md`, `scripts/sync-from-claude.sh`
+
+[v0.2.0]: https://github.com/mthorry/thorryos/releases/tag/v0.2.0
+
 ## [v0.1.8] — 2026-05-01
 
 ### Added

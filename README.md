@@ -11,7 +11,7 @@
 
 > 📖 **Public docs.** The plugin marketplace itself lives in a private repo at [`mthorry/thorryos`](https://github.com/mthorry/thorryos) — ping [@mthorry](https://github.com/mthorry) on Slack to be added as a collaborator before installing. This repo just holds the README, CHANGELOG, and CONTRIBUTING so the docs are readable without access.
 
-[![Version](https://img.shields.io/badge/version-0.1.8-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plugins](https://img.shields.io/badge/plugins-4-orange.svg)](#whats-in-here)
 [![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-24-purple.svg)](#whats-in-here)
@@ -29,7 +29,7 @@
 - [Built for Carrot engineers](#built-for-carrot-engineers)
 - [What's in here](#whats-in-here)
   - [`thorry-pr-flow`](#thorry-pr-flow)
-  - [`thorry-meetings`](#thorry-meetings)
+  - [`thorry-debriefs`](#thorry-debriefs)
   - [`thorry-jira`](#thorry-jira)
   - [`thorry-carrot-eligibility`](#thorry-carrot-eligibility)
 - [60-second demo](#60-second-demo)
@@ -71,7 +71,7 @@ You'll see four plugins:
 
 ```
   thorry-pr-flow             [ ]   IC operating model commands + shipped-note
-  thorry-meetings            [ ]   Meeting transcripts + spike wrap-ups
+  thorry-debriefs            [ ]   Meeting transcripts → structured readouts
   thorry-jira                [ ]   Jira ticket / file / triage / quick-pickup
   thorry-carrot-eligibility  [ ]   Eligibility domain auto-context (Carrot-internal)
 ```
@@ -121,13 +121,12 @@ The IC operating model commands plus simplification + ship visibility.
 | agent | `convention-reviewer` | Specialist reviewer — file location, naming, DI wiring, AI_Context_Docs anti-patterns. Spawned by `/pr-review` |
 | agent | `migration-reviewer` | Specialist reviewer — EF / SQL migration safety (lock contention, NOT NULL backfill, index ordering). Spawned by `/pr-review` only when the diff includes a migration |
 
-### `thorry-meetings`
+### `thorry-debriefs`
 
 | Type | Name | What it does |
 |---|---|---|
-| command | `/meeting <transcript>` | Turn a Zoom (or other) transcript into structured readout |
+| command | `/meeting <transcript>` | Turn a Zoom (or other) transcript into structured readout — exec summary, decisions, action items, risks |
 | skill | `meeting-notes` | Same readout, auto-fires when a transcript is detected (`.vtt` file, timestamp lines, etc.) |
-| skill | `spike-wrap` | Draft a Slack-ready team note announcing a completed spike |
 
 ### `thorry-jira`
 
@@ -139,6 +138,7 @@ The IC operating model commands plus simplification + ship visibility.
 | skill | `jira-file` | File a batch of drafted tickets with parent epic + blocking links wired up |
 | skill | `jira-triage` | Auto-triage on-call tickets (`OPSDSK-*`, `ENOC-*`, on-call-flagged `PN-*`) with ranked hypotheses |
 | skill | `quick-tickets` | Surface 1-2-pointer / under-20-LoC tickets you can pick up |
+| skill | `spike-wrap` | Draft a Slack-ready team note announcing a completed spike — pairs with `/spike-doc` |
 
 ### `thorry-carrot-eligibility`
 
@@ -252,7 +252,7 @@ thorryos/
 │   ├── commands/                 # slash commands (user-typed)
 │   ├── skills/                   # auto-fire on description match
 │   └── agents/                   # specialist subprocesses spawned by commands
-├── thorry-meetings/
+├── thorry-debriefs/
 │   ├── .claude-plugin/plugin.json
 │   ├── commands/
 │   └── skills/

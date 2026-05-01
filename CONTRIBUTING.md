@@ -53,8 +53,8 @@ If you want to ship a draft yourself, open a PR. Conventions:
 Pick the plugin whose theme fits:
 
 - **`thorry-pr-flow`** — anything in the IC operating model: planning, scoping, debugging, PR review, ship signaling.
-- **`thorry-meetings`** — meetings, transcripts, spike wrap-ups, anything announcement-flavored.
-- **`thorry-jira`** — Jira drafting, filing, triage, backlog scanning.
+- **`thorry-debriefs`** — meeting transcripts → structured readouts. Anything that turns a recorded conversation into decisions, action items, and risks.
+- **`thorry-jira`** — Jira drafting, filing, triage, backlog scanning, plus the spike workflow (research doc + announcement).
 - **`thorry-carrot-eligibility`** — only Carrot.Eligibility-domain context.
 
 If your skill doesn't fit any existing plugin, propose a new one in the issue.
