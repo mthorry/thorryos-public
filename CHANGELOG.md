@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.1.6] — 2026-05-01
+
+### Changed
+
+- **`/plan` now operates the full multi-PR workflow end-to-end, not just the prose breakdown.** When a plan contains 2+ PRs and the parent ticket is known, `/plan` files Jira sub-tasks with the canonical ThorryOS attribution footer, links them as a sequential `Blocks` chain so the dependency order is explicit on each ticket, and prescribes the stacked-PR branch convention (each PR branches off the previous one and targets it as the base, GitHub auto-retargets to `main` as the chain merges). Single-PR plans skip the subtask step. Parallel PRs (no `Blocks` chain) branch off `main` directly. Branch naming convention: `<TICKET-KEY>-<kebab-description>` using each subtask's own key, not the parent's.
+- Affected: `thorry-pr-flow/commands/plan.md`.
+
+[v0.1.6]: https://github.com/mthorry/thorryos/releases/tag/v0.1.6
+
 ## [v0.1.5] — 2026-05-01
 
 ### Changed
