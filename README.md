@@ -278,7 +278,7 @@ Semantic versioning via git tags:
 - `v0.x.x` — pre-1.0, breaking changes possible between minor versions
 - `v1.0.0` — first stable release; minor bumps are additive only
 
-Current: `v0.1.0`. See [releases](https://github.com/mthorry/thorryos/releases) for what's shipped.
+Current: `v0.1.0`. See [releases](CHANGELOG.md) for what's shipped.
 
 ---
 
