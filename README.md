@@ -11,10 +11,10 @@
 
 > 📖 **Public docs.** The plugin marketplace itself lives in a private repo at [`mthorry/thorryos`](https://github.com/mthorry/thorryos) — ping [@mthorry](https://github.com/mthorry) on Slack to be added as a collaborator before installing. This repo just holds the README, CHANGELOG, and CONTRIBUTING so the docs are readable without access.
 
-[![Version](https://img.shields.io/badge/version-0.1.7-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.1.8-blue.svg)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plugins](https://img.shields.io/badge/plugins-4-orange.svg)](#whats-in-here)
-[![Skills + Commands](https://img.shields.io/badge/skills%20%2B%20commands-19-purple.svg)](#whats-in-here)
+[![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-24-purple.svg)](#whats-in-here)
 [![Built for](https://img.shields.io/badge/built%20for-Carrot%20engineers-ff69b4.svg)](#built-for-carrot-engineers)
 [![Claude Code](https://img.shields.io/badge/claude%20code-plugin%20marketplace-7c3aed.svg)](https://docs.claude.com/en/docs/claude-code/plugins)
 
@@ -109,12 +109,17 @@ The IC operating model commands plus simplification + ship visibility.
 | command | `/plan <task>` | Decompose work into PR-sized units with risks, edges, sequencing |
 | command | `/scope <task>` | Find the smallest viable v1 and what to defer |
 | command | `/triage <symptom>` | Ranked-hypothesis debugging — validate before code changes |
-| command | `/pr-review <PR or Jira>` | Pre-submit AI review: bugs, edges, tests, ticket alignment, simplify delegation |
+| command | `/pr-review <PR or Jira>` | Pre-submit AI review: bugs, edges, tests, ticket alignment, simplify delegation. Fans out to 4–5 specialist agents (correctness, tests, ticket-fit, conventions, migrations) in parallel — each runs in its own context so the diff stays out of the main session |
 | command | `/pr-test <PR or Jira>` | Execute a PR's manual test plan against local/dev (hard guardrail: never stage or prod) |
 | command | `/import-review` | Import / pipeline / data ingestion review against the Backend section |
 | command | `/routine-draft <goal>` | Draft a scheduled-task spec ready to paste into the macOS Routines UI |
 | skill | `simplify` | Find reuse / dead branches / loop-collapses in a diff. Used by `/pr-review`, fires on its own when asked |
 | skill | `shipped-note` | Auto-drafts a 1-line team-channel note when non-trivial work ships |
+| agent | `correctness-reviewer` | Specialist reviewer — bugs, logic errors, edge cases. Spawned by `/pr-review` |
+| agent | `test-coverage-auditor` | Specialist reviewer — happy/edge/failure coverage gaps per CLAUDE.md. Spawned by `/pr-review` |
+| agent | `ticket-fit-reviewer` | Specialist reviewer — AC coverage, behavior mismatch, scope creep. Spawned by `/pr-review` |
+| agent | `convention-reviewer` | Specialist reviewer — file location, naming, DI wiring, AI_Context_Docs anti-patterns. Spawned by `/pr-review` |
+| agent | `migration-reviewer` | Specialist reviewer — EF / SQL migration safety (lock contention, NOT NULL backfill, index ordering). Spawned by `/pr-review` only when the diff includes a migration |
 
 ### `thorry-meetings`
 
@@ -221,7 +226,7 @@ For curious teammates:
 
 - **Plugin cache survives updates:** per-user config (`~/.claude/thorryos.config.json`) lives outside any plugin's directory, so `/plugin marketplace update` doesn't blow it away.
 - **Versioning:** semver via git tags (`v0.1.0`, etc). Each `plugin.json` has a matching `version` field.
-- **Skills vs commands:** commands are user-typed (`/plan`, `/triage`); skills auto-fire when their description matches. Both live inside the per-plugin directories.
+- **Skills, commands, and agents:** commands are user-typed (`/plan`, `/triage`); skills auto-fire when their description matches; agents are specialist subprocesses spawned by other commands or skills. Each runs in its own context window with its own tool restrictions, which keeps noisy intermediate work (e.g. a 2000-line PR diff) out of the main conversation. All three live inside the per-plugin directories.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow if you want to suggest a skill or contribute one.
 
@@ -245,7 +250,8 @@ thorryos/
 ├── thorry-pr-flow/
 │   ├── .claude-plugin/plugin.json
 │   ├── commands/                 # slash commands (user-typed)
-│   └── skills/                   # auto-fire on description match
+│   ├── skills/                   # auto-fire on description match
+│   └── agents/                   # specialist subprocesses spawned by commands
 ├── thorry-meetings/
 │   ├── .claude-plugin/plugin.json
 │   ├── commands/

@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.1.8] — 2026-05-01
+
+### Added
+
+- **`/pr-review` now fans out to parallel specialist agents instead of running ten sections sequentially in the main context.** Sections 1–2 (correctness + edges), 4 (tests), 9 (ticket fit), and 10 (conventions) now spawn one focused agent each — `correctness-reviewer`, `test-coverage-auditor`, `ticket-fit-reviewer`, `convention-reviewer` — in a single round trip. A fifth, `migration-reviewer`, conditionally fires when the diff includes EF / SQL migrations and folds back into section 1. Each agent reads the diff in its own context window with read-only tools and returns a paragraph of grounded findings, so wall-clock time roughly equals the slowest reviewer (not the sum) and the diff stays out of the orchestrator's main context. Each agent enforces the "would Matt actually leave this as a PR comment?" filter independently and returns a clean line (e.g. "No correctness issues.") when nothing's wrong, so the user always sees that the lens ran. `agents/` is a new top-level layout type for ThorryOS plugins, alongside `commands/` and `skills/`.
+- Affected: `thorry-pr-flow/agents/correctness-reviewer.md`, `thorry-pr-flow/agents/test-coverage-auditor.md`, `thorry-pr-flow/agents/ticket-fit-reviewer.md`, `thorry-pr-flow/agents/convention-reviewer.md`, `thorry-pr-flow/agents/migration-reviewer.md`, `thorry-pr-flow/commands/pr-review.md`.
+
+[v0.1.8]: https://github.com/mthorry/thorryos/releases/tag/v0.1.8
+
 ## [v0.1.7] — 2026-05-01
 
 ### Changed
