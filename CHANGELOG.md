@@ -1,0 +1,71 @@
+# Changelog
+
+All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
+
+## [v0.1.3] — 2026-05-01
+
+### Changed
+
+- **Confluence pages (`/spike-doc`):** the two-line attribution stack collapses into a single combined italic line, matching the v0.1.2 Jira pattern. Same wording: `*This was created using ThorryOS with [Claude](https://claude.com/claude-code). [Learn more](https://github.com/mthorry/thorryos).*`
+
+[v0.1.3]: https://github.com/mthorry/thorryos/releases/tag/v0.1.3
+
+## [v0.1.2] — 2026-05-01
+
+### Changed
+
+- **Jira tickets:** the two-line attribution stack collapses into a single combined italic line, reducing footer clutter on tickets reviewed in refinement.
+  - Before: separate Claude line + ThorryOS line below the divider.
+  - After: `*This was created using ThorryOS with [Claude](https://claude.com/claude-code). [Learn more](https://github.com/mthorry/thorryos).*`
+- Affected: `jira-ticket`, `jira-file` (which preserves jira-ticket's footer).
+
+[v0.1.2]: https://github.com/mthorry/thorryos/releases/tag/v0.1.2
+
+## [v0.1.1] — 2026-05-01
+
+Polish pass before sharing with the team.
+
+### Changed
+
+- Generated artifacts (Slack messages, Jira tickets, Confluence pages, meeting readouts) now include a small italic source-attribution footer at the bottom: `*This was created using ThorryOS. [Learn more](https://github.com/mthorry/thorryos).*` (Slack mrkdwn equivalent on Slack-format outputs). Sits below the existing Claude attribution where one is already present.
+- Affected: `shipped-note`, `spike-wrap`, `meeting-notes` (1-liner + full readout), `jira-ticket`, `jira-file`, `/spike-doc`.
+- Plugin and marketplace versions bumped to `0.1.1`.
+
+[v0.1.1]: https://github.com/mthorry/thorryos/releases/tag/v0.1.1
+
+## [v0.1.0] — 2026-05-01
+
+Initial public-ish release. ThorryOS goes from "scattered files in `~/.claude/`" to "a Claude Code plugin marketplace teammates can opt into."
+
+### Added
+
+#### Plugins
+- **`thorry-pr-flow`** — IC operating model commands (`/plan`, `/scope`, `/triage`, `/pr-review`, `/pr-test`, `/import-review`, `/routine-draft`) plus the `simplify` and `shipped-note` skills.
+- **`thorry-meetings`** — `/meeting` command, `meeting-notes` and `spike-wrap` skills.
+- **`thorry-jira`** — `/spike-doc` and `/diagram-from-outline` commands; `jira-ticket`, `jira-file`, `jira-triage`, `quick-tickets` skills.
+- **`thorry-carrot-eligibility`** — `eligibility-context` skill (Carrot-internal).
+
+#### Tooling
+- `CONTRIBUTING.md` — workflow for suggesting / authoring skills.
+- `~/.claude/thorryos.config.json` config-file pattern — per-user default Slack channel, persisted across sessions and surviving `/plugin marketplace update`.
+
+#### Newly authored skills/commands (vs. the source `~/.claude/`)
+- `/spike-doc` — spike → Confluence doc + dependent Jira ticket cluster with blocks links, in one flow. Replaces the multi-step manual ritual that was the most time-consuming workflow in author's week.
+- `/routine-draft` — ready-to-paste scheduled-task spec for the macOS Routines UI. Encodes the canonical four scope sources (Claude transcripts, git, GitHub PRs, Slack) and the dedupe-against-prior-state pattern.
+- `/diagram-from-outline` — turns a phased work outline into a FigJam diagram via the Figma MCP.
+- `simplify` skill — explicit reuse / dead-branch / loop-collapse review, scoped to "would Matt leave this as a PR comment" so it doesn't generate noise. Used by `/pr-review`.
+
+### Design decisions
+
+- **`~/.claude/` is the source of truth.** The marketplace is a synced mirror, not a parallel codebase. Edits flow one direction (`~/.claude/` → marketplace) via local maintainer tooling.
+- **Per-user config outside the plugin cache.** `~/.claude/thorryos.config.json` survives marketplace updates so user preferences (default Slack channel) aren't reset on every pull.
+- **Carrot specifics preserved deliberately.** The audience is Carrot engineers; the Jira instance, project keys, sprint IDs, NetCoreApp paths, and `*.local.get-carrot.com` host patterns are the value, not decoration.
+- **Private repo, opt-in plugins.** Visibility is for teammates only (private GitHub). Once installed, plugins are off by default — engineers enable just the plugins they want via `/plugin`.
+
+### Repo hygiene
+
+- README: badges, table of contents, 60-second demo, "Built for Carrot engineers" framing up front instead of as a buried caveat, install path with what-success-looks-like guidance.
+- LICENSE: MIT.
+- `.gitignore` covering `.DS_Store`, IDE folders, `node_modules/`.
+
+[v0.1.0]: https://github.com/mthorry/thorryos/releases/tag/v0.1.0
