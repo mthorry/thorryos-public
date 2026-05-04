@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.1] — 2026-05-04
+
+### Changed
+
+- **`/plan` now creates draft PRs for blocked work and promotes the first subtask to Ready for Review.** When a sequential (stacked) PR plan is executed, PR 2 and beyond are opened with `gh pr create --draft` so they don't land in reviewers' queues before their blocker merges. PR 1 is opened as a regular non-draft PR, and its Jira subtask is immediately transitioned to "Ready for Review." When each blocker merges and GitHub auto-retargets the next branch, the author un-drafts it. Genuinely parallel PRs (no Blocks chain) are all opened non-draft with all subtasks promoted.
+- Affected: `thorry-pr-flow/commands/plan.md`.
+
+[v0.2.1]: https://github.com/mthorry/thorryos/releases/tag/v0.2.1
+
 ## [v0.2.0] — 2026-05-01
 
 ### Changed (breaking)
