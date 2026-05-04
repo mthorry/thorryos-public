@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.5] — 2026-05-04
+
+### Changed
+
+- **`/meeting` now supports `--concise` and `--verbose` flags, with auto-detection as the default.** Quick syncs and short meetings (under ~30 min or ~300 transcript lines) auto-select concise mode: a 2–3 sentence summary, one-liner decisions, a compact action items table, and a Slack 1-liner — no rationale breakdowns, attribution map, or dissents section. Larger meetings get the full verbose readout. Pass `--concise` / `-c` or `--verbose` / `-v` to override the auto-detection.
+- Affected: `thorry-debriefs/commands/meeting.md`, `thorry-debriefs/skills/meeting-notes/SKILL.md`.
+
+[v0.2.5]: https://github.com/mthorry/thorryos/releases/tag/v0.2.5
+
 ## [v0.2.4] — 2026-05-04
 
 ### Changed
