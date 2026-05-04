@@ -2,6 +2,16 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.2] — 2026-05-04
+
+### Changed
+
+- **`/pr-review` now appends a ThorryOS attribution footer to every comment it posts to GitHub.** Any inline or top-level PR comment posted via `gh` will end with `_This was sent using [ThorryOS](…) with [Claude](…)._`, making AI involvement visible on the PR thread.
+- **`/pr-test` now reuses the primary checkout when it's already on the PR branch** instead of always creating a `/tmp` worktree. Concurrent phase execution (worktree I/O overlapped with diff analysis) is also made explicit.
+- Affected: `thorry-pr-flow/commands/pr-review.md`, `thorry-pr-flow/commands/pr-test.md`.
+
+[v0.2.2]: https://github.com/mthorry/thorryos/releases/tag/v0.2.2
+
 ## [v0.2.1] — 2026-05-04
 
 ### Changed
