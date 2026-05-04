@@ -2,6 +2,16 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.3] — 2026-05-04
+
+### Changed
+
+- **`/plan` PR descriptions are now bounded and stop polluting Jira cross-references.** New "PR description shape" rule: aim for ~15 lines, max ~20 — one short context paragraph, 3–6 scope bullets, optional one-line "Choices" only for things a reviewer might push back on, and a test plan. Long risk justifications, alternatives considered, and "future work" lists move to PR comments. Separately, **don't cross-reference sibling PRs or tickets in the body for stack-relationship signaling** (e.g. "stacked on #8367 (PN-2247)"); Jira's GitHub integration auto-links the PR to every ticket key it finds, polluting the ticket-to-PR cross-references on every sibling. The stack relationship is already visible via the GitHub base branch.
+- **`/triage` now accepts Jira ticket keys or URLs and runs a Jira-aware flow.** When invoked with `/triage ENOC-123` or a Jira URL, the command fetches the ticket + comments, extracts symptom / customer / run context / troubleshooting history, and produces a structured readout (ranked hypotheses → validation plan → what to skip → customer context → recurrence detection). Falls back to the generic triage flow for free-form bug descriptions. Bypasses the project filter on the `jira-triage` skill — explicit `/triage` works on any Jira ticket.
+- Affected: `thorry-pr-flow/commands/plan.md`, `thorry-pr-flow/commands/triage.md`.
+
+[v0.2.3]: https://github.com/mthorry/thorryos/releases/tag/v0.2.3
+
 ## [v0.2.2] — 2026-05-04
 
 ### Changed
