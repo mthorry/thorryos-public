@@ -2,6 +2,17 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.4] — 2026-05-04
+
+### Changed
+
+- **`/plan` and `CLAUDE.md` no longer bias toward splitting work into multiple PRs by default.** The PR breakdown instruction now reads: split only when it improves review speed, enables parallel review, or isolates deployment risk — not to produce smaller diffs for their own sake. The objective function entry ("more, smaller PRs") and the Pull Requests section of `CLAUDE.md` are updated to match. A well-scoped single PR is explicitly preferred over two artificially small ones.
+- **`/import-review` now loads eligibility domain context before producing findings.** When the resolved diff touches `Carrot.Eligibility` paths, `EligibilityEntry`, `EligibleDependent`, `EligibilityDB`, `EligibilityService`, or related patterns, the skill invokes `eligibility-context` (loading `overview.md` + `BEST_PRACTICES.md`) and frames findings against the documented current-state vs future-state model, with explicit callout of anti-patterns.
+- **`/triage` and `jira-triage` now apply pre-validation rules before ranking hypotheses.** No error text in the ticket → make "retrieve the actual error from logs" the entire validation plan rather than generating code-path hypotheses blind. Member action failures → check entity existence first (EligibilityEntry present?) before reasoning about why the action was rejected. Checks are ordered cheapest-first: entity existence → actual error text → business logic → config/data shape.
+- Affected: `thorry-pr-flow/commands/plan.md`, `thorry-pr-flow/commands/import-review.md`, `thorry-pr-flow/commands/triage.md`, `thorry-jira/skills/jira-triage/SKILL.md`.
+
+[v0.2.4]: https://github.com/mthorry/thorryos/releases/tag/v0.2.4
+
 ## [v0.2.3] — 2026-05-04
 
 ### Changed
