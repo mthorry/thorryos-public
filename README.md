@@ -11,10 +11,10 @@
 
 > 📖 **Public docs.** The plugin marketplace itself lives in a private repo at [`mthorry/thorryos`](https://github.com/mthorry/thorryos) — ping [@mthorry](https://github.com/mthorry) on Slack to be added as a collaborator before installing. This repo just holds the README, CHANGELOG, and CONTRIBUTING so the docs are readable without access.
 
-[![Version](https://img.shields.io/badge/version-0.2.5-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.6-blue.svg)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plugins](https://img.shields.io/badge/plugins-4-orange.svg)](#whats-in-here)
-[![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-24-purple.svg)](#whats-in-here)
+[![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-25-purple.svg)](#whats-in-here)
 [![Built for](https://img.shields.io/badge/built%20for-Carrot%20engineers-ff69b4.svg)](#built-for-carrot-engineers)
 [![Claude Code](https://img.shields.io/badge/claude%20code-plugin%20marketplace-7c3aed.svg)](https://docs.claude.com/en/docs/claude-code/plugins)
 
@@ -126,6 +126,7 @@ The IC operating model commands plus simplification + ship visibility.
 | Type | Name | What it does |
 |---|---|---|
 | command | `/meeting <transcript>` | Turn a Zoom (or other) transcript into structured readout — exec summary, decisions, action items, risks |
+| command | `/meet-prep <Slack URL or topic>` | Pre-meeting brief from a Slack thread — background, expected decisions, open questions, talking points |
 | skill | `meeting-notes` | Same readout, auto-fires when a transcript is detected (`.vtt` file, timestamp lines, etc.) |
 
 ### `thorry-jira`

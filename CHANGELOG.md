@@ -2,6 +2,21 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.6] — 2026-05-06
+
+### Added
+
+- **New `/meet-prep` command in `thorry-debriefs` — pre-meeting brief from a Slack thread.** Pass a Slack thread URL or a topic string; the command reads the thread (or searches for the most relevant recent one), then produces a structured brief: background, expected agenda/decisions, questions to be ready to answer, talking points, and risks/blockers to surface proactively. Complements `/meeting`, which processes transcripts after the fact.
+- Affected: `thorry-debriefs/commands/meet-prep.md`.
+
+### Changed
+
+- **`/pr-review` now includes a sub-agent maintenance rule.** A new note at the top of the command makes explicit that any edit to `pr-review.md` must also update the five parallel reviewer agents (`correctness-reviewer`, `test-coverage-auditor`, `ticket-fit-reviewer`, `convention-reviewer`, `migration-reviewer`) in the same session. Prevents the agents drifting out of sync when the command evolves. Output format also tightened: `simplify` delegation removed, section references simplified, `migration-reviewer` folded cleanly into the correctness section.
+- **`/plan` attribution footer updated.** Link text changed to `[ThorryOS](https://github.com/mthorry/thorryos-public)` so the footer is self-contained without a separate Claude link.
+- Affected: `thorry-pr-flow/commands/pr-review.md`, `thorry-pr-flow/commands/plan.md`, all five `thorry-pr-flow/agents/*.md`.
+
+[v0.2.6]: https://github.com/mthorry/thorryos/releases/tag/v0.2.6
+
 ## [v0.2.5] — 2026-05-04
 
 ### Changed
