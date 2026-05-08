@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.7] — 2026-05-08
+
+### Added
+
+- **New `eligibility-db-setup` skill in `thorry-carrot-eligibility` — local EligibilityDB setup runbook.** Fires when the user mentions `docker compose --profile migrate-eligibilitydb`, `reset-carrot-ee-db`, `migrate-eligibilitydb-after-reset`, `eligibility_entry` seed inserts, or "set up local EEDB." Walks the canonical setup ladder (Docker Desktop → `docker compose migrate` → DataGrip → Rider reset → seed SQL) and includes an error table for the five most common failures: Docker not running, wrong working directory, `sa` user mismatch, command hanging at exit code 0, and VPN required for stage/prod. References the Confluence setup page as the authoritative source.
+- Affected: `thorry-carrot-eligibility/skills/eligibility-db-setup`.
+
+[v0.2.7]: https://github.com/mthorry/thorryos/releases/tag/v0.2.7
+
 ## [v0.2.6] — 2026-05-06
 
 ### Added
