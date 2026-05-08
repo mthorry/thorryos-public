@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.8] — 2026-05-08
+
+### Changed
+
+- **`eligibility-db-setup` skill now points at `setup-ee-db.sh` rather than inlining setup steps.** The actual setup logic lives in a new shell script (`NetCoreApp/EligibilityDb/setup-ee-db.sh`) that any teammate can run directly — no Claude required. First-time: `./EligibilityDb/setup-ee-db.sh`. Reset: `./EligibilityDb/setup-ee-db.sh --reset`. The `--exit-code-from` flag on `docker compose up` is used internally to resolve the hang-at-exit-code-0 issue without requiring users to know about it. The skill now acts as a lightweight error guide and seed SQL reference, deferring to the script for the happy path.
+- Affected: `thorry-carrot-eligibility/skills/eligibility-db-setup`.
+
+[v0.2.8]: https://github.com/mthorry/thorryos/releases/tag/v0.2.8
+
 ## [v0.2.7] — 2026-05-08
 
 ### Added
