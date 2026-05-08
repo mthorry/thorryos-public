@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.9] — 2026-05-08
+
+### Changed
+
+- **Removed the strict ≤300-line PR size threshold from `/pr-review` and global guidance.** The hard line-count check has been replaced with judgment-based guidance: flag size only when the diff is large enough to meaningfully slow a reviewer down and a logical split point exists. The previous rule was creating friction on well-scoped but larger changes and conflicted with the "well-scoped single PR beats two artificially small ones" principle already in `CLAUDE.md`.
+- Affected: `thorry-pr-flow/commands/pr-review.md`.
+
+[v0.2.9]: https://github.com/mthorry/thorryos/releases/tag/v0.2.9
+
 ## [v0.2.8] — 2026-05-08
 
 ### Changed
