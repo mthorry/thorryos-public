@@ -2,6 +2,16 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.10] — 2026-05-11
+
+### Changed
+
+- **`/pr-review` now requires explicit approval before posting to GitHub.** After agents complete, the review is output locally and the user is asked "Post this review to the PR? (yes / no)" — nothing is sent to GitHub until confirmed. Also added heredoc + raw-backtick guidance for `gh pr comment` so inline code renders correctly in GitHub markdown.
+- **`/plan` tightens PR description length targets.** Context section drops from "one short paragraph" to "1-3 sentences"; bullet count drops from 3-6 to 2-3; line limit drops from ~20 to ~15. Added heredoc shell formatting guidance for `gh pr create` bodies.
+- Affected: `thorry-pr-flow/commands/pr-review.md`, `thorry-pr-flow/commands/plan.md`.
+
+[v0.2.10]: https://github.com/mthorry/thorryos/releases/tag/v0.2.10
+
 ## [v0.2.9] — 2026-05-08
 
 ### Changed
