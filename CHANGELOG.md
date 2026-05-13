@@ -2,6 +2,18 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.11] — 2026-05-13
+
+### Changed
+
+- **`/pr-review` now loads the CodeRabbit review as pre-context before spawning agents.** If a CodeRabbit comment exists on the PR (`coderabbit-ai` bot), its walkthrough and flagged issues are fetched via `gh api` and passed to each reviewer agent — so agents focus on gaps CR missed rather than duplicating its file-by-file pass. If no CR comment exists, the step is silently skipped.
+- **`/plan` adds a "Definition of done" section before the PR breakdown.** Section 3 is now 3–5 observable outcomes a reviewer can verify from outside the code. Subsequent sections renumbered (PR breakdown → 4, Risks → 5, Dependencies → 6, Defer → 7). Aligns with Working Principle 5: DoD agreed before work starts.
+- **`shipped-note` hyperlinks Jira ticket keys in Slack mrkdwn format.** Bare keys (e.g. `PN-2244`) are no longer written — they trigger the Jira Slack integration and post noisy ticket cards. The skill now always emits `<https://carrotfertility.atlassian.net/browse/KEY|KEY>`, which suppresses that behavior.
+- **Reviewer agents support local-diff (no-PR) mode.** All four sub-agents (`correctness-reviewer`, `test-coverage-auditor`, `ticket-fit-reviewer`, `convention-reviewer`) now accept either a PR number or an inline diff, enabling `/pr-review` to work without a remote PR.
+- Affected: `thorry-pr-flow/commands/pr-review.md`, `thorry-pr-flow/commands/plan.md`, `thorry-pr-flow/skills/shipped-note`, `thorry-pr-flow/agents/`.
+
+[v0.2.11]: https://github.com/mthorry/thorryos/releases/tag/v0.2.11
+
 ## [v0.2.10] — 2026-05-11
 
 ### Changed
