@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.12] — 2026-05-19
+
+### Changed
+
+- **`/meeting` renamed to `/summarize-meeting` in `thorry-debriefs`.** Clarifies that this command produces a read-only structured readout of a transcript (no external actions). Pair it with `/close-meeting` to distribute outcomes. The `close-meeting.md` cross-reference updated to match.
+- Affected: `thorry-debriefs/commands/summarize-meeting.md` (was `meeting.md`).
+
+[v0.2.12]: https://github.com/mthorry/thorryos/releases/tag/v0.2.12
+
 ## [v0.2.11] — 2026-05-13
 
 ### Changed
