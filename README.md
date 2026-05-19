@@ -14,7 +14,7 @@
 [![Version](https://img.shields.io/badge/version-0.2.13-blue.svg)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plugins](https://img.shields.io/badge/plugins-4-orange.svg)](#whats-in-here)
-[![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-25-purple.svg)](#whats-in-here)
+[![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-26-purple.svg)](#whats-in-here)
 [![Built for](https://img.shields.io/badge/built%20for-Carrot%20engineers-ff69b4.svg)](#built-for-carrot-engineers)
 [![Claude Code](https://img.shields.io/badge/claude%20code-plugin%20marketplace-7c3aed.svg)](https://docs.claude.com/en/docs/claude-code/plugins)
 
@@ -125,7 +125,7 @@ The IC operating model commands plus simplification + ship visibility.
 
 | Type | Name | What it does |
 |---|---|---|
-| command | `/meeting <transcript>` | Turn a Zoom (or other) transcript into structured readout — exec summary, decisions, action items, risks |
+| command | `/summarize-meeting <transcript>` | Turn a Zoom (or other) transcript into structured readout — exec summary, decisions, action items, risks |
 | command | `/meet-prep <Slack URL or topic>` | Pre-meeting brief from a Slack thread — background, expected decisions, open questions, talking points |
 | skill | `meeting-notes` | Same readout, auto-fires when a transcript is detected (`.vtt` file, timestamp lines, etc.) |
 
@@ -146,6 +146,7 @@ The IC operating model commands plus simplification + ship visibility.
 | Type | Name | What it does |
 |---|---|---|
 | skill | `eligibility-context` | Auto-load `NetCoreApp/Carrot.Eligibility/AI_Context_Docs/{overview,best-practices}.md` whenever you're working in that domain |
+| skill | `eligibility-db-setup` | Local EligibilityDB (EEDB) setup runbook — fires on `docker compose migrate-eligibilitydb` / `reset-carrot-ee-db` errors. Walks Docker → migrate → DataGrip → Rider reset → seed SQL, with an error table for the five most common failures |
 
 Useful only if you have the carrot-app repo cloned at the path it expects. If you don't work in `Carrot.Eligibility`, leave this plugin disabled.
 
@@ -287,7 +288,7 @@ Semantic versioning via git tags:
 - `v0.x.x` — pre-1.0, breaking changes possible between minor versions
 - `v1.0.0` — first stable release; minor bumps are additive only
 
-Current: `v0.1.0`. See [releases](CHANGELOG.md) for what's shipped.
+Current: `v0.2.13`. See [releases](CHANGELOG.md) for what's shipped.
 
 ---
 
