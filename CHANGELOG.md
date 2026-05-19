@@ -2,6 +2,16 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.13] — 2026-05-19
+
+### Added
+
+- **`/pr-review` now scans the diff for new suppressions before reviewer fan-out.** A fast local pass flags newly-added suppression tokens — `#pragma warning disable`, `[SuppressMessage]`, `// eslint-disable`, `// @ts-ignore`, ` as any`, empty `catch` blocks, `.only(` / `.skip(` test markers, and permissive config-threshold drift — and classifies each as `justified` (specific inline reason), `vague` ("TODO", "fix later"), or `unjustified` (no comment). Section 1 of the review now leads with these so the reviewer sees the author's intentional escapes before reading anything else. If clean, the section collapses to `No new suppressions.`
+- **Opt-in personal-wiki integration in producer skills.** `meeting-notes` (thorry-debriefs), `shipped-note` (thorry-pr-flow), and `spike-doc` + `spike-wrap` (thorry-jira) now check for a wiki spec file at `~/.claude/references/wiki.md` and, if present, fold their artifacts (meeting pages, ship records, spike docs) into a personal markdown knowledge graph with cross-linked entity pages and a chronological log. No-op by default — skills behave exactly as before for anyone who hasn't created the spec file. Inspired by Karpathy's LLM-maintained-wiki pattern.
+- Affected: `thorry-pr-flow/commands/pr-review.md`, `thorry-debriefs/skills/meeting-notes`, `thorry-pr-flow/skills/shipped-note`, `thorry-jira/skills/spike-wrap`, `thorry-jira/commands/spike-doc.md`.
+
+[v0.2.13]: https://github.com/mthorry/thorryos/releases/tag/v0.2.13
+
 ## [v0.2.12] — 2026-05-19
 
 ### Changed
