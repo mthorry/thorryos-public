@@ -2,6 +2,17 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.14] — 2026-05-20
+
+### Changed
+
+- **`/plan` now runs `/pr-review` as a pre-flight before opening a PR.** Before calling `gh pr create`, the workflow invokes `/pr-review` in local-diff mode against the merge-base with `main` and surfaces findings to the user — blocking items get fixed before the PR opens; non-blocking items get summarized for the user to address now or defer. Skips only if `/pr-review` already ran this session against the current HEAD with no new commits since, or if the user explicitly says to skip. Catches the class of issues (incomplete grep audits, missing failure-path tests, misleading exception types, docs that contradict the change) that would otherwise show up as the first round of human review.
+- **`/plan` no longer auto-transitions the Jira ticket to "Ready for Review" on `gh pr create`.** New "Jira transition timing" section spells out the gate: CI green, CodeRabbit complete, PR no longer in draft. Transitioning before that puts a broken PR in reviewers' queues and skips the automated pre-human-review feedback loop. The transition is now a separate later step, prompted by the user once those gates have closed.
+- **`shipped-note` no longer fires on `gh pr create`.** Opening a PR is not shipping; the skill now fires only on `gh pr merge` success, explicit "shipped/merged/deployed/got it in" from the user, or an already-merged PR URL. Description also reinforces "never post without explicit user confirmation." Caught when the skill drafted a shipped-note immediately after a PR was opened — that's not what shipping means.
+- Affected: `thorry-pr-flow/commands/plan.md`, `thorry-pr-flow/skills/shipped-note`.
+
+[v0.2.14]: https://github.com/mthorry/thorryos/releases/tag/v0.2.14
+
 ## [v0.2.13] — 2026-05-19
 
 ### Added
