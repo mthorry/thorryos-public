@@ -11,10 +11,10 @@
 
 > 📖 **Public docs.** The plugin marketplace itself lives in a private repo at [`mthorry/thorryos`](https://github.com/mthorry/thorryos) — ping [@mthorry](https://github.com/mthorry) on Slack to be added as a collaborator before installing. This repo just holds the README, CHANGELOG, and CONTRIBUTING so the docs are readable without access.
 
-[![Version](https://img.shields.io/badge/version-0.2.14-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.15-blue.svg)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plugins](https://img.shields.io/badge/plugins-4-orange.svg)](#whats-in-here)
-[![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-26-purple.svg)](#whats-in-here)
+[![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-27-purple.svg)](#whats-in-here)
 [![Built for](https://img.shields.io/badge/built%20for-Carrot%20engineers-ff69b4.svg)](#built-for-carrot-engineers)
 [![Claude Code](https://img.shields.io/badge/claude%20code-plugin%20marketplace-7c3aed.svg)](https://docs.claude.com/en/docs/claude-code/plugins)
 
@@ -113,6 +113,7 @@ The IC operating model commands plus simplification + ship visibility.
 | command | `/pr-test <PR or Jira>` | Execute a PR's manual test plan against local/dev (hard guardrail: never stage or prod) |
 | command | `/import-review` | Import / pipeline / data ingestion review against the Backend section |
 | command | `/routine-draft <goal>` | Draft a scheduled-task spec ready to paste into the macOS Routines UI |
+| command | `/context-refresh` | Compare an org event (transcript, Confluence, Google Doc, or Slack URL) against your `~/.claude/` context — surfaces stale team names, mandates, and contacts as numbered proposals you accept/reject before anything is written |
 | skill | `simplify` | Find reuse / dead branches / loop-collapses in a diff. Used by `/pr-review`, fires on its own when asked |
 | skill | `shipped-note` | Auto-drafts a 1-line team-channel note when non-trivial work ships |
 | agent | `correctness-reviewer` | Specialist reviewer — bugs, logic errors, edge cases. Spawned by `/pr-review` |
@@ -288,7 +289,7 @@ Semantic versioning via git tags:
 - `v0.x.x` — pre-1.0, breaking changes possible between minor versions
 - `v1.0.0` — first stable release; minor bumps are additive only
 
-Current: `v0.2.14`. See [releases](CHANGELOG.md) for what's shipped.
+Current: `v0.2.15`. See [releases](CHANGELOG.md) for what's shipped.
 
 ---
 

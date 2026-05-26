@@ -2,6 +2,16 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.15] — 2026-05-26
+
+### Added
+
+- **New `/context-refresh` command in `thorry-pr-flow`.** Takes a meeting transcript, Confluence URL, Google Doc URL, Jira URL, or Slack thread as input, reads your current `~/.claude/CLAUDE.md` and memory files (including `prodeng-context/org.yaml`), and compares them against the new information to surface stale sections — team names, contacts, mandates, priorities, shared infrastructure. Produces numbered diff-style proposals the user accepts or rejects per item; nothing is written until confirmed. Useful after all-hands meetings, reorgs, departures, and any org event that invalidates standing context. Emerged from a recurring pattern of manually auditing `~/.claude/` after every major org change.
+- **`meeting-notes` adds a briefing mode (`--briefing` / `-b`) for informational meetings.** Auto-detect logic now uses three tiers: _briefing_ (one speaker ≳65% of lines, or no first-person commitment language / Q&A back-and-forth — catches all-hands, tech talks, exec announcements, vendor demos), _concise_ (short two-way discussions), and _verbose_ (substantive multi-party meetings). Briefing mode outputs a read-only summary — captured claims, announcements, numbers, stated positions — without an action-item table, since informational meetings don't produce commitments. Addresses the pattern of `/summarize-meeting` producing an empty "No action items" section for broadcast-style sessions.
+- Affected: `thorry-pr-flow/commands/context-refresh.md`, `thorry-debriefs/skills/meeting-notes`.
+
+[v0.2.15]: https://github.com/mthorry/thorryos/releases/tag/v0.2.15
+
 ## [v0.2.14] — 2026-05-20
 
 ### Changed
