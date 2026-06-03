@@ -11,7 +11,7 @@
 
 > 📖 **Public docs.** The plugin marketplace itself lives in a private repo at [`mthorry/thorryos`](https://github.com/mthorry/thorryos) — ping [@mthorry](https://github.com/mthorry) on Slack to be added as a collaborator before installing. This repo just holds the README, CHANGELOG, and CONTRIBUTING so the docs are readable without access.
 
-[![Version](https://img.shields.io/badge/version-0.2.15-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.16-blue.svg)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plugins](https://img.shields.io/badge/plugins-4-orange.svg)](#whats-in-here)
 [![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-27-purple.svg)](#whats-in-here)
@@ -289,7 +289,7 @@ Semantic versioning via git tags:
 - `v0.x.x` — pre-1.0, breaking changes possible between minor versions
 - `v1.0.0` — first stable release; minor bumps are additive only
 
-Current: `v0.2.15`. See [releases](CHANGELOG.md) for what's shipped.
+Current: `v0.2.16`. See [releases](CHANGELOG.md) for what's shipped.
 
 ---
 

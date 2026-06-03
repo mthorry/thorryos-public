@@ -2,6 +2,16 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.16] — 2026-06-03
+
+### Changed
+
+- **`/plan` PR description shape now writes for a human reviewer first.** Replaces the `[x]`/`[ ]` checkbox "Test plan" with a **Steps to test locally** section: numbered, concrete, `do X → expect Y` steps a teammate can actually run — covering setup-once, happy path, an edge or failure case, and a regression check when load-bearing. Reframes the body sections (Summary, What changed, Choices, Steps to test, optional Agent notes) so a teammate skimming their queue can pick the PR up without reading the diff first. Adds an explicit **Agent notes** section at the bottom for LLM/agent-relevant context (file paths, invariants, non-auto-linking ticket refs) so humans can skip it. Body budget bumped from ~10/15 to ~15/25 lines — the steps-to-test section earns the room. Worked example included in the spec so the format is reproducible. `/pr-test` was already executing this section verbatim; now it has real steps to execute.
+- **Removed the ThorryOS attribution footer from all producer skills and commands.** `jira-ticket`, `jira-file`, `spike-doc`, `spike-wrap`, `meeting-notes`, `shipped-note`, and `pr-review` no longer append `_This was created using ThorryOS..._` to their outputs. The footer added noise to every ticket, Confluence page, Slack post, and PR comment without conveying useful information — Co-Authored-By trailers already mark AI involvement where it matters. `jira-ticket` retains an optional `_Source: ..._` italic line for spike-doc / meeting linkage when applicable.
+- Affected: `thorry-pr-flow/commands/plan.md`, `thorry-pr-flow/commands/pr-review.md`, `thorry-pr-flow/commands/routine-draft.md`, `thorry-pr-flow/skills/shipped-note`, `thorry-debriefs/skills/meeting-notes`, `thorry-jira/commands/spike-doc.md`, `thorry-jira/skills/jira-ticket`, `thorry-jira/skills/jira-file`, `thorry-jira/skills/spike-wrap`.
+
+[v0.2.16]: https://github.com/mthorry/thorryos/releases/tag/v0.2.16
+
 ## [v0.2.15] — 2026-05-26
 
 ### Added
