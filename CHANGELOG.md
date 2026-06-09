@@ -2,6 +2,16 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.17] — 2026-06-09
+
+### Changed
+
+- **`/plan` and `/spike-doc` now default to one PR / one ticket, splitting only on a concrete trigger.** The PR-breakdown step in `/plan` was rewritten to start from a single PR and multiply only when a named trigger fires — reviewer benefit (diff too large / parallel review), sequencing benefit (a later slice depends on an earlier one being deployed first), or deployment-risk isolation. "Smaller diff," "groups more neatly," "refactor-then-use," and "one PR per logical unit" are explicitly called out as non-reasons; if no trigger can be named, the work folds into the previous PR. `/spike-doc` ticket drafting now mirrors this: a ticket with 6 DoD bullets is fine, two artificially small tickets that only make sense together are not. Aligns both with the CLAUDE.md "default to one PR" principle.
+- **`eligibility-db-setup` documents the PN-2193 reset-parity behavior.** The skill now describes what `reset-ee-db` / `reset-carrot-ee-db` actually populate (row-for-row `eligibility_entry` parity with dev `Employee`, sequence advanced past `100_000_000`, solo-EE fixtures across invitation states, `invitation` rows for EEs with registration data) and how to tune solo-EE volume/state mix via `PopulateEligibilityDb` in `appsettings.db.json`. The old "manually seed an entry" content is retained as the one-off path.
+- Affected: `thorry-pr-flow/commands/plan.md`, `thorry-jira/commands/spike-doc.md`, `thorry-carrot-eligibility/skills/eligibility-db-setup`.
+
+[v0.2.17]: https://github.com/mthorry/thorryos/releases/tag/v0.2.17
+
 ## [v0.2.16] — 2026-06-03
 
 ### Changed
