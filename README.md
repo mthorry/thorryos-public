@@ -11,7 +11,7 @@
 
 > 📖 **Public docs.** The plugin marketplace itself lives in a private repo at [`mthorry/thorryos`](https://github.com/mthorry/thorryos) — ping [@mthorry](https://github.com/mthorry) on Slack to be added as a collaborator before installing. This repo just holds the README, CHANGELOG, and CONTRIBUTING so the docs are readable without access.
 
-[![Version](https://img.shields.io/badge/version-0.2.17-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.18-blue.svg)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plugins](https://img.shields.io/badge/plugins-4-orange.svg)](#whats-in-here)
 [![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-27-purple.svg)](#whats-in-here)
@@ -126,9 +126,9 @@ The IC operating model commands plus simplification + ship visibility.
 
 | Type | Name | What it does |
 |---|---|---|
-| command | `/summarize-meeting <transcript>` | Turn a Zoom (or other) transcript into structured readout — exec summary, decisions, action items, risks |
+| command | `/summarize-transcript <transcript>` | Turn a transcript — meeting or one-way recording (Loom/screencast) — into a structured readout shaped to the recording type — exec summary, decisions, action items, risks |
 | command | `/meet-prep <Slack URL or topic>` | Pre-meeting brief from a Slack thread — background, expected decisions, open questions, talking points |
-| skill | `meeting-notes` | Same readout, auto-fires when a transcript is detected (`.vtt` file, timestamp lines, etc.) |
+| skill | `meeting-notes` | Same readout, auto-fires when a transcript is detected (`.vtt` / `.srt` file, timestamp lines, etc.) |
 
 ### `thorry-jira`
 
@@ -289,7 +289,7 @@ Semantic versioning via git tags:
 - `v0.x.x` — pre-1.0, breaking changes possible between minor versions
 - `v1.0.0` — first stable release; minor bumps are additive only
 
-Current: `v0.2.17`. See [releases](CHANGELOG.md) for what's shipped.
+Current: `v0.2.18`. See [releases](CHANGELOG.md) for what's shipped.
 
 ---
 

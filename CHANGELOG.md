@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.18] — 2026-06-22
+
+### Changed
+
+- **`/summarize-meeting` renamed to `/summarize-transcript`, and the workflow now shapes output to the recording type.** The command name was meeting-centric, but the underlying `meeting-notes` skill handles any transcript — including one-way recordings (Loom, screencast, async video). The renamed command instructs the skill to drop the "decisions / dissents / attendees" framing for a solo investigation or demo and keep only the sections that fit (TL;DR, what was established, action items, open questions). The skill's trigger description now covers `.srt` files and SRT-style comma timestamps, and explicitly names one-way recordings. The stale `/meeting` reference (dead since the v0.2.12 rename) was removed from the skill description and the `meet-prep` cross-reference now points at `/summarize-transcript`.
+- Affected: `thorry-debriefs/commands/summarize-transcript.md` (was `summarize-meeting.md`), `thorry-debriefs/commands/meet-prep.md`, `thorry-debriefs/skills/meeting-notes`.
+
+[v0.2.18]: https://github.com/mthorry/thorryos/releases/tag/v0.2.18
+
 ## [v0.2.17] — 2026-06-09
 
 ### Changed
