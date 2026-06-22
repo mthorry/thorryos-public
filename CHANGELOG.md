@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.19] — 2026-06-22
+
+### Changed
+
+- **README "60-second demo" now reflects the one-PR default.** The demo's `/plan` output still showed a three-PR breakdown of a soft-delete column add — the multi-PR-happy behavior the v0.2.17 `/plan` rewrite was meant to retire. It now returns a single PR (migration + read filter + tests together) plus one genuinely separate PR carrying an explicit `separate because:` trigger (the `CREATE INDEX CONCURRENTLY` step, isolated for deployment risk), so the demo teaches the current default and the per-PR trigger format rather than contradicting them.
+- Affected: `README.md` (docs only — no plugin behavior changed).
+
+[v0.2.19]: https://github.com/mthorry/thorryos/releases/tag/v0.2.19
+
 ## [v0.2.18] — 2026-06-22
 
 ### Changed

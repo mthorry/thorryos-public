@@ -11,7 +11,7 @@
 
 > 📖 **Public docs.** The plugin marketplace itself lives in a private repo at [`mthorry/thorryos`](https://github.com/mthorry/thorryos) — ping [@mthorry](https://github.com/mthorry) on Slack to be added as a collaborator before installing. This repo just holds the README, CHANGELOG, and CONTRIBUTING so the docs are readable without access.
 
-[![Version](https://img.shields.io/badge/version-0.2.18-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.19-blue.svg)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plugins](https://img.shields.io/badge/plugins-4-orange.svg)](#whats-in-here)
 [![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-27-purple.svg)](#whats-in-here)
@@ -172,14 +172,18 @@ You'll get back something like:
      index added in a follow-up PR
    - Should the EF migration be reversible? — YES, always.
 
-3. PR breakdown
-   - PR #1 (~80 LOC): EF migration adding nullable `DeletedAt`, no read changes
-   - PR #2 (~120 LOC): repository methods filter `WHERE DeletedAt IS NULL`, add unit tests
-   - PR #3 (~40 LOC): one-off cleanup — delete an obvious caller path that re-fetches
+3. PR breakdown — defaults to one PR
+   - PR #1 (~200 LOC): EF migration (nullable `DeletedAt`) + repository methods filter
+     `WHERE DeletedAt IS NULL` + unit tests. Migration, read change, and tests ship together —
+     no trigger to split them.
+   - PR #2 (~30 LOC) — separate because: deployment-risk isolation. The covering index on the
+     50M-row table needs `CREATE INDEX CONCURRENTLY`, which can't run inside the transactional
+     migration and has a different rollback profile.
 
 4. Risks and edges
    - Existing readers don't filter → they'll see soft-deleted rows. Test with a seeded deleted row.
-   - Migration on a 50M-row table is fine for nullable add; index in a separate PR with CONCURRENTLY.
+   - Nullable add on a 50M-row table is a fast metadata change; the index is isolated to PR #2
+     precisely because `CONCURRENTLY` is the riskier, separately-deployable step.
 
 …
 ```
@@ -289,7 +293,7 @@ Semantic versioning via git tags:
 - `v0.x.x` — pre-1.0, breaking changes possible between minor versions
 - `v1.0.0` — first stable release; minor bumps are additive only
 
-Current: `v0.2.18`. See [releases](CHANGELOG.md) for what's shipped.
+Current: `v0.2.19`. See [releases](CHANGELOG.md) for what's shipped.
 
 ---
 
