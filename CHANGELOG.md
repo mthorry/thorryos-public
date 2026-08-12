@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.20] — 2026-08-12
+
+### Added
+
+- **`/pr-review` now walks the repo's `guidelines/README.md` index, matching the org's `carrot-pr-agent`.** When a reviewed repo carries a root `guidelines/` directory (carrot-app does), `/pr-review` loads its scenario-gated index and applies each guideline whose scenario the diff triggers — so the local pre-submit pass stops diverging from the automated GitHub reviewer. The `convention-reviewer` agent gained a checklist question (Q8) that applies the triggered guidelines literally, respecting their `required/recommended/suggestion` severities; the DI-lifetime rule includes the out-of-diff registration lookup (grep `Dependencies.cs`, read the actual lifetime at head) that flags a DB-dependent service left as `Transient`/`Singleton`. Repos without the index skip the check silently.
+- Affected: `thorry-pr-flow/commands/pr-review.md`, `thorry-pr-flow/agents/convention-reviewer.md`.
+
+[v0.2.20]: https://github.com/mthorry/thorryos/releases/tag/v0.2.20
+
 ## [v0.2.19] — 2026-06-22
 
 ### Changed
