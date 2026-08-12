@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.21] — 2026-08-12
+
+### Added
+
+- **New `staff-engineer-review` agent — a blended staff-level reviewer distilled from real review history.** Auto-detects backend (C#/.NET) vs frontend (React/TS) from the changed files and applies the matching reviewer profile: a Backend reviewer (blended from carrot-app's senior reviewers) and a Frontend reviewer (blended from carrot-frontend / admin-shell's). Strong-suggestion posture — it never frames anything as blocking or "changes requested," and never names individual engineers. Runs standalone, or as the 6th `/pr-review` fan-out agent scoped to higher-altitude design judgment (layering, API shape, duplication → shared abstraction, boundary defensiveness) so it doesn't restate what the specialist agents already own; its findings feed the review's mechanical blocking/risk classification and populate a new section 7. Also fixed a stale "section 7" reference in the `/pr-review` context-loading step.
+- Affected: `thorry-pr-flow/agents/staff-engineer-review.md` (new), `thorry-pr-flow/commands/pr-review.md`.
+
+[v0.2.21]: https://github.com/mthorry/thorryos/releases/tag/v0.2.21
+
 ## [v0.2.20] — 2026-08-12
 
 ### Added

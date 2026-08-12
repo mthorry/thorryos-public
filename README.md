@@ -11,10 +11,10 @@
 
 > 📖 **Public docs.** The plugin marketplace itself lives in a private repo at [`mthorry/thorryos`](https://github.com/mthorry/thorryos) — ping [@mthorry](https://github.com/mthorry) on Slack to be added as a collaborator before installing. This repo just holds the README, CHANGELOG, and CONTRIBUTING so the docs are readable without access.
 
-[![Version](https://img.shields.io/badge/version-0.2.20-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.21-blue.svg)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plugins](https://img.shields.io/badge/plugins-4-orange.svg)](#whats-in-here)
-[![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-27-purple.svg)](#whats-in-here)
+[![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-28-purple.svg)](#whats-in-here)
 [![Built for](https://img.shields.io/badge/built%20for-Carrot%20engineers-ff69b4.svg)](#built-for-carrot-engineers)
 [![Claude Code](https://img.shields.io/badge/claude%20code-plugin%20marketplace-7c3aed.svg)](https://docs.claude.com/en/docs/claude-code/plugins)
 
@@ -121,6 +121,7 @@ The IC operating model commands plus simplification + ship visibility.
 | agent | `ticket-fit-reviewer` | Specialist reviewer — AC coverage, behavior mismatch, scope creep. Spawned by `/pr-review` |
 | agent | `convention-reviewer` | Specialist reviewer — file location, naming, DI wiring, AI_Context_Docs anti-patterns. Spawned by `/pr-review` |
 | agent | `migration-reviewer` | Specialist reviewer — EF / SQL migration safety (lock contention, NOT NULL backfill, index ordering). Spawned by `/pr-review` only when the diff includes a migration |
+| agent | `staff-engineer-review` | Blended staff-level reviewer — auto-detects backend (C#/.NET) vs frontend (React/TS) and applies a reviewer profile distilled from real review history. Runs standalone or as the 6th `/pr-review` fan-out for higher-altitude design judgment |
 
 ### `thorry-debriefs`
 
@@ -293,7 +294,7 @@ Semantic versioning via git tags:
 - `v0.x.x` — pre-1.0, breaking changes possible between minor versions
 - `v1.0.0` — first stable release; minor bumps are additive only
 
-Current: `v0.2.20`. See [releases](CHANGELOG.md) for what's shipped.
+Current: `v0.2.21`. See [releases](CHANGELOG.md) for what's shipped.
 
 ---
 
