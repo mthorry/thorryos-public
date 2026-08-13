@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.22] — 2026-08-13
+
+### Changed
+
+- **`/pr-review` now treats any `(required)` repo-guideline violation as blocking, regardless of runtime risk.** When a diff breaks a guideline tagged `(required)` (from a `guidelines/README.md`-linked file — e.g. the DI-lifetime rule "any DB-dependent service must be `Scoped`"), the review classifies it as must-fix-before-merge even when the blast radius looks low, matching the org's automated `carrot-pr-agent`. The `convention-reviewer` agent now appends the guideline's severity tag (`[guideline: required|recommended|suggestion]`) to each guideline-derived finding so the classification is mechanical, not judgment. Also tightened `/plan` steps-to-test to resolve concrete seed values (display names, seeded emails, DB-assigned IDs) instead of emitting placeholder tokens.
+- Affected: `thorry-pr-flow/commands/pr-review.md`, `thorry-pr-flow/agents/convention-reviewer.md`, `thorry-pr-flow/commands/plan.md`.
+
+[v0.2.22]: https://github.com/mthorry/thorryos/releases/tag/v0.2.22
+
 ## [v0.2.21] — 2026-08-12
 
 ### Added
