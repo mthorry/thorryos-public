@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.23] — 2026-08-17
+
+### Changed
+
+- **`/jira-ticket` now omits the "Blocks / Blocked by" section entirely when a ticket has no real dependencies.** Previously the skill always emitted six sections with `Blocked by: none` / `Blocks: none` filler; an all-`none` block is noise, so a dependency-free ticket now has five sections and the block only appears when it conveys a real blocker relationship. Matches how refinement-ready tickets should read.
+- Affected: `thorry-jira/skills/jira-ticket/SKILL.md`.
+
+[v0.2.23]: https://github.com/mthorry/thorryos/releases/tag/v0.2.23
+
 ## [v0.2.22] — 2026-08-13
 
 ### Changed
