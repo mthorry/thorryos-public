@@ -2,6 +2,20 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.24] — 2026-09-02
+
+### Added
+
+- **`/plan` now handles spike tickets and gates on local testing.** A `[SPIKE]` or analysis-only ticket produces zero PRs and no Jira subtasks — the deliverable is a written artifact, and the output location (a Confluence page vs. a comment on the spike ticket) is decided by how many follow-on tickets and decisions it carries. Separately, `/plan` stops after a clean `/pr-review` and hands the branch off for real-app UI testing with the numbered steps written out, rather than prompting to commit.
+- Affected: `thorry-pr-flow/commands/plan.md`.
+
+### Changed
+
+- **Instruction prose across commands and skills rewritten to match the house writing style.** These files are now checked by a style linter, and this release clears every phrasing it flagged: `load-bearing`, `lands`/`landed`, and `sanity-check` are replaced with wording that says what actually happens — "affects multiple teams", "went to the right person", "gut-check". Command behavior is unchanged; what changed is the wording these files teach Claude to imitate.
+- Affected: `thorry-pr-flow/commands/{plan,pr-review,pr-test}.md`, `thorry-jira/commands/spike-doc.md`, `thorry-jira/skills/quick-tickets/SKILL.md`, `thorry-debriefs/skills/meeting-notes/SKILL.md`, `thorry-carrot-eligibility/skills/eligibility-context/SKILL.md`.
+
+[v0.2.24]: https://github.com/mthorry/thorryos/releases/tag/v0.2.24
+
 ## [v0.2.23] — 2026-08-17
 
 ### Changed
