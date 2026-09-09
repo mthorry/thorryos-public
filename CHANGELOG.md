@@ -2,6 +2,22 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.25] — 2026-09-09
+
+### Added
+
+- **`/spike-doc` and `/plan` now ship the spike structure spec they depend on.** Both commands pointed at `~/.claude/references/spike-doc.md`, a path that only resolves on the author's machine, so every teammate got an instruction they could not follow. The spec ships inside `thorry-jira` and `thorry-pr-flow` as `references/spike-doc.md`, and the commands resolve it through `${CLAUDE_PLUGIN_ROOT}` when running as a plugin. It carries the section order, the audience constraint (a PM and an engineer reading the same page), the S/M/L work-item legend, and the prose-length ceiling.
+- **`jira-ticket` runs a two-pass check before showing a draft.** The style linter first when it is installed, then a judgment pass the linter cannot do: title length, description at or under three sentences, every DoD bullet verifiable from outside the code, no two bullets describing the same change, dependencies recorded symmetrically, forward references that actually exist. The DoD standard is now three bullets, four when the work does not fit in three, five only when omitting the fifth would let the ticket ship wrong.
+- **Releases are now audited for paths that only exist on the author's machine.** Any `~/.claude/...` reference in a shipped skill or command is classified as guarded, when nearby prose says what to do if the file is absent, or unguarded when it is not. Three releases shipped an unfollowable instruction of this kind before the check existed. The check lives in the maintainer's local sync tooling, which is not part of this repo; it reports rather than blocks, and thirteen pre-existing unguarded references are left for follow-up.
+- Affected: `thorry-jira/commands/spike-doc.md`, `thorry-jira/skills/jira-ticket/SKILL.md`, `thorry-jira/references/spike-doc.md`, `thorry-pr-flow/commands/plan.md`, `thorry-pr-flow/references/spike-doc.md`.
+
+### Changed
+
+- **The style linter call in `jira-ticket` is guarded.** The linter is personal setup and does not ship, so the skill now skips straight to the judgment pass when the path is absent instead of telling teammates to run a script they do not have.
+- **README says which style tooling is not shipped.** The writing-style spec, its linter, and `/style-check` stay out of the marketplace; `/plan` references the spec for spike output and runs without it. `What's NOT shipped` records that instead of leaving teammates to find out.
+
+[v0.2.25]: https://github.com/mthorry/thorryos/releases/tag/v0.2.25
+
 ## [v0.2.24] — 2026-09-02
 
 ### Added

@@ -11,7 +11,7 @@
 
 > 📖 **Public docs.** The plugin marketplace itself lives in a private repo at [`mthorry/thorryos`](https://github.com/mthorry/thorryos) — ping [@mthorry](https://github.com/mthorry) on Slack to be added as a collaborator before installing. This repo just holds the README, CHANGELOG, and CONTRIBUTING so the docs are readable without access.
 
-[![Version](https://img.shields.io/badge/version-0.2.24-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.25-blue.svg)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plugins](https://img.shields.io/badge/plugins-4-orange.svg)](#whats-in-here)
 [![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-28-purple.svg)](#whats-in-here)
@@ -245,6 +245,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow if you want to suggest a
 - **`CLAUDE.md`** — Matt's personal global instructions live in `~/.claude/CLAUDE.md` and aren't a plugin-shaped artifact. Several skills reference "CLAUDE.md Output > Activity" / "CLAUDE.md Tool Usage" — they still work without that exact file, but the references are flavor, not a hard dependency.
 - **Auto-memory** — per-cwd memories under `~/.claude/projects/<encoded-cwd>/memory/` are personal and stay out of the marketplace.
 - **Slack ID cache** — `~/.claude/references/slack-ids.md` (channel + user IDs) is personal and not shipped. Slack-posting skills check for it as an optional cache and fall back to live `slack_search_*` calls if absent.
+- **Writing-style spec + linter** — `~/.claude/references/writing-style.md` and `scripts/style-lint.py` (and the `/style-check` command that drives them) are Matt's personal setup and stay out of the marketplace. `/plan` points at the spec for spike output; without it the command still runs, you just don't get the word-and-voice rules or the lint hooks. The spike-doc *structure* spec is shipped — see `references/` in `thorry-jira` and `thorry-pr-flow`.
 - **`settings.json` / hooks** — those are per-user harness configuration, not plugin artifacts. Use the `update-config` skill to manage your own.
 
 ---
@@ -259,7 +260,8 @@ thorryos/
 │   ├── .claude-plugin/plugin.json
 │   ├── commands/                 # slash commands (user-typed)
 │   ├── skills/                   # auto-fire on description match
-│   └── agents/                   # specialist subprocesses spawned by commands
+│   ├── agents/                   # specialist subprocesses spawned by commands
+│   └── references/               # specs the commands read at runtime
 ├── thorry-debriefs/
 │   ├── .claude-plugin/plugin.json
 │   ├── commands/
@@ -267,7 +269,8 @@ thorryos/
 ├── thorry-jira/
 │   ├── .claude-plugin/plugin.json
 │   ├── commands/
-│   └── skills/
+│   ├── skills/
+│   └── references/
 ├── thorry-carrot-eligibility/
 │   ├── .claude-plugin/plugin.json
 │   └── skills/
@@ -294,7 +297,7 @@ Semantic versioning via git tags:
 - `v0.x.x` — pre-1.0, breaking changes possible between minor versions
 - `v1.0.0` — first stable release; minor bumps are additive only
 
-Current: `v0.2.24`. See [releases](CHANGELOG.md) for what's shipped.
+Current: `v0.2.25`. See [releases](CHANGELOG.md) for what's shipped.
 
 ---
 
