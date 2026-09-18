@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.27] — 2026-09-18
+
+### Changed
+
+- **`eligibility-context` now loads a third doc: `eligibility-stability-status.md`.** The skill splits durable domain concepts (`overview.md`, changes rarely) from volatile state (`eligibility-stability-status.md` — current flag values, cutover-blocking tickets, rollback thresholds, which decay week to week). It reads all three docs on fire and flags when status-shaped content is being added to `overview.md`, where it would go stale. README row and plugin description updated to match.
+- Affected: `thorry-carrot-eligibility/skills/eligibility-context/SKILL.md`.
+
+[v0.2.27]: https://github.com/mthorry/thorryos/releases/tag/v0.2.27
+
 ## [v0.2.26] — 2026-09-18
 
 ### Changed

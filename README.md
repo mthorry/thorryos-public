@@ -11,7 +11,7 @@
 
 > 📖 **Public docs.** The plugin marketplace itself lives in a private repo at [`mthorry/thorryos`](https://github.com/mthorry/thorryos) — ping [@mthorry](https://github.com/mthorry) on Slack to be added as a collaborator before installing. This repo just holds the README, CHANGELOG, and CONTRIBUTING so the docs are readable without access.
 
-[![Version](https://img.shields.io/badge/version-0.2.26-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.27-blue.svg)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plugins](https://img.shields.io/badge/plugins-4-orange.svg)](#whats-in-here)
 [![Skills + Commands + Agents](https://img.shields.io/badge/skills%20%2B%20commands%20%2B%20agents-28-purple.svg)](#whats-in-here)
@@ -147,7 +147,7 @@ The IC operating model commands plus simplification + ship visibility.
 
 | Type | Name | What it does |
 |---|---|---|
-| skill | `eligibility-context` | Auto-load `NetCoreApp/Carrot.Eligibility/AI_Context_Docs/{overview,best-practices}.md` whenever you're working in that domain |
+| skill | `eligibility-context` | Auto-load `NetCoreApp/Carrot.Eligibility/AI_Context_Docs/{overview,eligibility-stability-status,best-practices}.md` whenever you're working in that domain |
 | skill | `eligibility-db-setup` | Local EligibilityDB (EEDB) setup runbook — fires on `docker compose migrate-eligibilitydb` / `reset-carrot-ee-db` errors. Walks Docker → migrate → DataGrip → Rider reset → seed SQL, with an error table for the five most common failures |
 
 Useful only if you have the carrot-app repo cloned at the path it expects. If you don't work in `Carrot.Eligibility`, leave this plugin disabled.
@@ -297,7 +297,7 @@ Semantic versioning via git tags:
 - `v0.x.x` — pre-1.0, breaking changes possible between minor versions
 - `v1.0.0` — first stable release; minor bumps are additive only
 
-Current: `v0.2.26`. See [releases](CHANGELOG.md) for what's shipped.
+Current: `v0.2.27`. See [releases](CHANGELOG.md) for what's shipped.
 
 ---
 
