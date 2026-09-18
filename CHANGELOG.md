@@ -2,6 +2,15 @@
 
 All notable changes to ThorryOS are recorded here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [v0.2.26] — 2026-09-18
+
+### Changed
+
+- **`/pr-review` fans out fewer agents over less diff.** The review now classifies the diff before spawning: non-code-only diffs skip the correctness and test-coverage agents, and the staff-engineer pass runs only above 150 changed lines or 3 changed files, where its architectural findings aren't already covered by the specialist agents. Reviewer agents fetch a scoped diff that drops lockfiles, snapshots, generated code, and minified bundles, and the CodeRabbit comment is distilled to a short summary once instead of being passed verbatim into every agent prompt. Cuts token cost on the command that runs on every PR, with no change to what a full-size code diff gets reviewed for.
+- Affected: `thorry-pr-flow/commands/pr-review.md`.
+
+[v0.2.26]: https://github.com/mthorry/thorryos/releases/tag/v0.2.26
+
 ## [v0.2.25] — 2026-09-09
 
 ### Added
